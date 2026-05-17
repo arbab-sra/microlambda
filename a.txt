@@ -1,0 +1,13 @@
+microlambda/
+├── src/
+│   ├── api.js          ← Express gateway (user-facing)
+│   ├── registry.js     ← Function store (metadata + code)
+│   ├── pool.js         ← VM pool manager (pre-warming)
+│   ├── executor.js     ← Firecracker REST API wrapper
+│   └── agent/
+│       └── server.js   ← Runs INSIDE the microVM
+├── scripts/
+│   └── setup-network.sh
+├── kernel/vmlinux.bin
+├── rootfs/base.ext4
+└── config.js

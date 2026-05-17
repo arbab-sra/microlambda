@@ -1,0 +1,1 @@
+exports.handler = async (e) => ({ result: e.a + e.b * e.a - e.b, sum: e.a + e.b * e.a - e.b })

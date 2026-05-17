@@ -1,0 +1,7 @@
+{
+  "name": "expration",
+  "handler": "handler",
+  "timeout": 5000,
+  "memory": 128,
+  "createdAt": 1774672198196
+}

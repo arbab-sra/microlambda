@@ -1,0 +1,22 @@
+# 1. Mount the base ext4 image
+mkdir /tmp/rootfs-mount
+sudo mount -o loop rootfs/base.ext4 /tmp/rootfs-mount
+
+# 2. Copy Node.js runtime into rootfs
+# (assuming you have a minimal node binary)
+sudo cp -r /usr/local/bin/node /tmp/rootfs-mount/usr/bin/
+
+# 3. Copy our agent
+sudo mkdir -p /tmp/rootfs-mount/opt/agent
+sudo cp src/agent/server.js /tmp/rootfs-mount/opt/agent/
+
+# 4. Make agent auto-start on boot (via /etc/rc.local)
+sudo bash -c 'cat >> /tmp/rootfs-mount/etc/rc.local << EOF
+# Configure guest IP
+ip addr add 172.16.X.2/30 dev eth0  # X = vmId
+ip link set eth0 up
+# Start agent
+node /opt/agent/server.js &
+EOF'
+
+sudo umount /tmp/rootfs-mount

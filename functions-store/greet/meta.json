@@ -1,0 +1,7 @@
+{
+  "name": "greet",
+  "handler": "handler",
+  "timeout": 5000,
+  "memory": 128,
+  "createdAt": 1774670835657
+}

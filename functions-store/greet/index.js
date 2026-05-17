@@ -1,0 +1,1 @@
+exports.handler = async (event) => ({ message: "Hello " + event.name + "!" })
