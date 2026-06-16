@@ -1,4 +1,4 @@
-microlambda/
+Microlambda/
 ├── src/
 │   ├── api.js          ← Express gateway (user-facing)
 │   ├── registry.js     ← Function store (metadata + code)

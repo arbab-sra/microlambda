@@ -38,12 +38,13 @@ app.post('/invoke/:name', async (req, res) => {
 
     const result = await handle.vm.run(fnConfig, req.body);
     await pool.release(handle.vm, result.success);
+    const wasWarm = handle.wasWarm;
     handle = null;
 
     res.json({
       ...result,
       function: req.params.name,
-      coldStart: !handle?.wasWarm,
+      coldStart: !wasWarm,
       totalMs: Date.now() - t0,
     });
   } catch (e) {
